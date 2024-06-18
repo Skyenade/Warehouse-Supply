@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import { ref, onValue, push, update, remove } from 'firebase/database';
-import { database } from "./Components/Firebase";
+import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
 
 
@@ -72,11 +72,11 @@ function App() {
         setCurrentId={setCurrentId}
         inventoryItems={inventoryItems}
       />
-      <Home
+      {/* <Home
         inventoryItems={inventoryItems}
         onDelete={onDelete}
         onEdit={onEdit}
-      />
+      /> */}
     </div>
 
     

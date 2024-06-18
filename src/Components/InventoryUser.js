@@ -34,7 +34,7 @@ const InventoryUser = ({ addorEditItems, currentId, ItemsObjects = {} }) => {
     }
 
 return(
-    <div>
+    <div class="form-group">
         <h1>Report Changes</h1>
         <form onSubmit={handleSubmit}>
             <input type="text"
