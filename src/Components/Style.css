@@ -45,3 +45,35 @@
 .sign-out:active{
     background-color: rgb(255, 34, 0);
 }
+
+body{
+    background-color:lightblue;
+}
+
+.edit {
+    background-color: greenyellow;
+    color: black;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: larger;
+    margin: 5px;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: larger;
+    margin: 5px;
+}
+
+table {
+    width: 100%;
+  
+    border-radius: 10px;
+    background-color:gainsboro;
+
+}
