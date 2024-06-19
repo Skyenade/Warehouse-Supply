@@ -4,13 +4,13 @@ import Home from './Components/Home';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
-
-
+import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
 
 function App() {
-
   const [inventoryItems, setInventoryItems] = useState({});
   const [currentId, setCurrentId] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const ItemsRef = ref(database, 'Inventory');
@@ -23,6 +23,10 @@ function App() {
     });
   }, []);
 
+  const setUserEmail = (userEmail) => {
+    setEmail(userEmail);
+  };
+
   const addorEditItems = (obj) => {
     if (currentId === "") {
       const newItemRef = push(ref(database, 'Inventory'));
@@ -34,7 +38,7 @@ function App() {
           console.log(error);
         });
     } else {
-      update(ref(database, 'inventory/' + currentId), obj)
+      update(ref(database, 'Inventory/' + currentId), obj)
         .then(() => {
           console.log("data updated");
         })
@@ -51,7 +55,7 @@ function App() {
 
   const onDelete = id => {
     if (window.confirm("Are you sure you want to delete?")) {
-      remove(ref(database, 'inventory/' + id))
+      remove(ref(database, 'Inventory/' + id))
         .then(() => {
           console.log("data deleted");
         })
@@ -61,25 +65,47 @@ function App() {
     }
   };
 
-
-
-
   return (
     <div className="App">
-      <InventoryUser
-        addorEditItems={addorEditItems}
-        currentId={currentId}
-        setCurrentId={setCurrentId}
-        inventoryItems={inventoryItems}
-      />
-      {/* <Home
-        inventoryItems={inventoryItems}
-        onDelete={onDelete}
-        onEdit={onEdit}
-      /> */}
+      <Router>
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <Home
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                email={email}
+              />
+            } 
+          />
+          <Route 
+            path="/inventory" 
+            element={
+              <InventoryUser
+                addorEditItems={addorEditItems}
+                currentId={currentId}
+                inventoryItems={inventoryItems}
+                email={email}
+              />
+            } 
+          />
+          <Route 
+            path="/signup" 
+            element={
+              <SignUp setUserEmail={setUserEmail} />
+            } 
+          />
+          <Route
+            path="/signin"
+            element={
+              <SignIn setUserEmail={setUserEmail} />
+            }
+          />
+        </Routes>
+      </Router>      
     </div>
-
-    
   );
 }
 
