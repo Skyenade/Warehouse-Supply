@@ -1,3 +1,8 @@
+body{
+    background-color:rgb(201, 220, 226);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .header-container {
     position: fixed;
     width: 100%;
@@ -46,9 +51,7 @@
     background-color: rgb(255, 34, 0);
 }
 
-body{
-    background-color:lightblue;
-}
+
 
 .edit {
     background-color: greenyellow;
@@ -121,7 +124,7 @@ form button:hover {
 }
 
 .logo-home{
-    height: 400px;
+    height: 50vh;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -130,10 +133,21 @@ form button:hover {
 }
 
 .home-buttons{
-    background: rgb(151, 151, 231);
+    background: rgb(60, 102, 227);
     padding: 20px;
     width: 100%;
     margin-top: 20px;
     border: none;
     border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.home-text{
+    margin: 0;
+    margin-top: 20px;
+    color: blue;
+    font-weight: 600;
+    text-decoration: underline;
 }

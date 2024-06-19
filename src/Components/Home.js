@@ -2,6 +2,9 @@ import React from "react";
 import './Style.css';
 import Header from "./Header";
 import logo from './logo.jpg';
+import { useNavigate } from "react-router-dom";
+
+
 
 const generateRows = (inventoryItems, onDelete, onEdit) => {
     const rows = [];
@@ -23,6 +26,17 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
 };
 
 const Home = ({ inventoryItems, onDelete, onEdit, email }) => {
+
+    const navigate = useNavigate();
+
+    const handleSignUp = () => {
+        navigate('/signup');
+    };
+
+    const handleSignIn = () => {
+        navigate('/signin');
+    };
+
     return (
         <div className="home-container">
             {email ?
@@ -46,9 +60,9 @@ const Home = ({ inventoryItems, onDelete, onEdit, email }) => {
                 :
                 <div>
                     <img src={logo} alt="Logo" className="logo-home" />
-                    <button className="home-buttons">SignIn</button>
-                    <p>Don't have an account?</p>
-                    <button className="home-buttons">SignUp</button>
+                    <button onClick={handleSignIn} className="home-buttons">Sign In</button>
+                    <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
+                    <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
                 </div>
             }
 
