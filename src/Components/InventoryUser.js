@@ -6,7 +6,7 @@ const initializeFieldsValues = {
     id: "",
     quantity: ""
 };
-const InventoryUser = ({ addorEditItems, currentId, inventoryItems }) => {    
+const InventoryUser = ({ addorEditItems, currentId, inventoryItems,email }) => {    
 
     const [values, setValues] = useState(initializeFieldsValues);
 
@@ -34,7 +34,7 @@ const InventoryUser = ({ addorEditItems, currentId, inventoryItems }) => {
 
     return (
         <div className="form-group">
-            <Header/>
+            <Header email={email}/>
             <h1>Report Changes</h1>
             <form onSubmit={handleSubmit}>
                 <input

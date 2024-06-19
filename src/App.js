@@ -4,10 +4,13 @@ import Home from './Components/Home';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
+import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
   const [currentId, setCurrentId] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const ItemsRef = ref(database, 'Inventory');
@@ -19,6 +22,10 @@ function App() {
       }
     });
   }, []);
+
+  const setUserEmail = (userEmail) => {
+    setEmail(userEmail);
+  };
 
   const addorEditItems = (obj) => {
     if (currentId === "") {
@@ -69,6 +76,7 @@ function App() {
                 inventoryItems={inventoryItems}
                 onDelete={onDelete}
                 onEdit={onEdit}
+                email={email}
               />
             } 
           />
@@ -79,11 +87,24 @@ function App() {
                 addorEditItems={addorEditItems}
                 currentId={currentId}
                 inventoryItems={inventoryItems}
+                email={email}
               />
             } 
           />
+          <Route 
+            path="/signup" 
+            element={
+              <SignUp setUserEmail={setUserEmail} />
+            } 
+          />
+          <Route
+            path="/signin"
+            element={
+              <SignIn setUserEmail={setUserEmail} />
+            }
+          />
         </Routes>
-      </Router>
+      </Router>      
     </div>
   );
 }

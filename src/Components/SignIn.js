@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase"; // Correct path to auth module
-import { signInWithEmailAndPassword } from "firebase/auth"; // Correct path to Firebase auth method
-import './Style.css'; // Correct path to Style.css
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import './Style.css';
+import Header from "./Header";
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
@@ -23,6 +24,7 @@ const SignIn = () => {
 
     return (
         <div className="container">
+            <Header email={email}/>
             <h1>Login</h1>
             <form onSubmit={handleSignin}>
                 <input

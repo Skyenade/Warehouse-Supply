@@ -1,6 +1,7 @@
 import React from "react";
 import './Style.css';
 import Header from "./Header";
+import logo from './logo.jpg';
 
 const generateRows = (inventoryItems, onDelete, onEdit) => {
     const rows = [];
@@ -21,24 +22,36 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
     return rows;
 };
 
-const Home = ({ inventoryItems, onDelete, onEdit }) => {
+const Home = ({ inventoryItems, onDelete, onEdit, email }) => {
     return (
-        <div>
-            <Header/>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {generateRows(inventoryItems, onDelete, onEdit)}
-                </tbody>
-            </table>
+        <div className="home-container">
+            {email ?
+                <div>
+                    <Header email={email} />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {generateRows(inventoryItems, onDelete, onEdit)}
+                        </tbody>
+                    </table>
+                </div>
+                :
+                <div>
+                    <img src={logo} alt="Logo" className="logo-home" />
+                    <button className="home-buttons">SignIn</button>
+                    <p>Don't have an account?</p>
+                    <button className="home-buttons">SignUp</button>
+                </div>
+            }
+
         </div>
     );
 };
