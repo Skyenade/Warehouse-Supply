@@ -5,10 +5,7 @@ import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
 
-
-
 function App() {
-
   const [inventoryItems, setInventoryItems] = useState({});
   const [currentId, setCurrentId] = useState("");
 
@@ -34,7 +31,7 @@ function App() {
           console.log(error);
         });
     } else {
-      update(ref(database, 'inventory/' + currentId), obj)
+      update(ref(database, 'Inventory/' + currentId), obj)
         .then(() => {
           console.log("data updated");
         })
@@ -51,7 +48,7 @@ function App() {
 
   const onDelete = id => {
     if (window.confirm("Are you sure you want to delete?")) {
-      remove(ref(database, 'inventory/' + id))
+      remove(ref(database, 'Inventory/' + id))
         .then(() => {
           console.log("data deleted");
         })
@@ -61,25 +58,33 @@ function App() {
     }
   };
 
-
-
-
   return (
     <div className="App">
-      <InventoryUser
-        addorEditItems={addorEditItems}
-        currentId={currentId}
-        setCurrentId={setCurrentId}
-        inventoryItems={inventoryItems}
-      />
-      {/* <Home
-        inventoryItems={inventoryItems}
-        onDelete={onDelete}
-        onEdit={onEdit}
-      /> */}
+      <Router>
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <Home
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+              />
+            } 
+          />
+          <Route 
+            path="/inventory" 
+            element={
+              <InventoryUser
+                addorEditItems={addorEditItems}
+                currentId={currentId}
+                inventoryItems={inventoryItems}
+              />
+            } 
+          />
+        </Routes>
+      </Router>
     </div>
-
-    
   );
 }
 

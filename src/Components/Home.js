@@ -1,6 +1,6 @@
 import React from "react";
-
 import './Style.css';
+import Header from "./Header";
 
 const generateRows = (inventoryItems, onDelete, onEdit) => {
     const rows = [];
@@ -8,9 +8,9 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
         rows.push(
             <tr key={id}>
                 <td>{inventoryItems[id].id}</td>
-                <td>{inventoryItems[id].Product}</td>
-                <td>{inventoryItems[id].Description}</td>
-                <td>{inventoryItems[id].Quantity}</td>
+                <td>{inventoryItems[id].products}</td> {/* Ensure this matches the key in inventoryItems */}
+                <td>{inventoryItems[id].description}</td> {/* Ensure this matches the key in inventoryItems */}
+                <td>{inventoryItems[id].quantity}</td>
                 <td>
                     <button className="edit" onClick={() => onEdit(id)}>Edit</button>
                     <button className="delete" onClick={() => onDelete(id)}>Delete</button>
@@ -18,33 +18,29 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
             </tr>
         );
     }
-    return rows; // Add this line to return the rows
+    return rows;
 };
 
-
-
-
 const Home = ({ inventoryItems, onDelete, onEdit }) => {
-
-
-return(
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Product</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {generateRows(inventoryItems, onDelete, onEdit)}
-            </tbody>
-        </table>
-    </div>
-)
-}
+    return (
+        <div>
+            <Header/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {generateRows(inventoryItems, onDelete, onEdit)}
+                </tbody>
+            </table>
+        </div>
+    );
+};
 
 export default Home;
