@@ -27,6 +27,10 @@ function App() {
     setEmail(userEmail);
   };
 
+  const handleSignOut = () => {
+    setEmail("");
+  };
+
   const addorEditItems = (obj) => {
     if (currentId === "") {
       const newItemRef = push(ref(database, 'Inventory'));
@@ -77,11 +81,12 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                handleSignOut={handleSignOut}
               />
             } 
           />
           <Route 
-            path="/inventory" 
+            path="/inventoryuser" 
             element={
               <InventoryUser
                 addorEditItems={addorEditItems}
