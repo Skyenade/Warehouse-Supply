@@ -33,17 +33,19 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const handleSignIn = () => {
         navigate('/signin');
     };
+ 
 
     return (
         <div className="home-container">
             {email && <Header email={email} handleSignOut={handleSignOut}/>}
-            <div className="content-container">
+            <div >
                 {email ? (
-                    <div>
+                    <div className="content-container">
                         <table>
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Picture</th>
                                     <th>Product</th>
                                     <th>Description</th>
                                     <th>Quantity</th>
@@ -53,6 +55,7 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
                             <tbody>
                                 {generateRows(inventoryItems, onDelete, onEdit)}
                             </tbody>
+                            
                         </table>
                     </div>
                 ) : (

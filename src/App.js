@@ -6,6 +6,7 @@ import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
 import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
+import UserManagement from "./Components/UserManagement";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -106,6 +107,12 @@ function App() {
             path="/signin"
             element={
               <SignIn setUserEmail={setUserEmail} />
+            }
+          />
+             <Route
+            path="/usermanagement"
+            element={
+              <UserManagement setUserEmail={setUserEmail} />
             }
           />
         </Routes>

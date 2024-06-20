@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 const Header = ({ email, handleSignOut }) => {
     const location = useLocation();
 
-    const showTitle = location.pathname === "/signin" || location.pathname === "/signup";
+    const showTitle = location.pathname === "/signin" || location.pathname === "/signup" || location.pathname === "/";
     const showHeaderRight = email && !showTitle;
 
     return (
