@@ -24,18 +24,18 @@ const UserManagement = () => {
     };
 
 
-return (
-    <div className='container'>
-        <Header email={email} />
-        <h1>User Management - New Users</h1>
-        <form onSubmit={handleConfirm}>
-            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
-            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' required />
-            <button type='submit'>Confirm</button>
-        </form>
-       
-    </div>
-);
+    return (
+        <div className='container'>
+            <Header email={email} />
+            <h1>User Management - New Users</h1>
+            <form onSubmit={handleConfirm}>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' required />
+                <button type='submit'>Confirm</button>
+            </form>
+
+        </div>
+    );
 }
 
 export default UserManagement;
