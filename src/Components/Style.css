@@ -21,6 +21,7 @@ body {
 
 .logo-header {
     height: 100%;
+    display: flex;
 }
 
 .header-right {
@@ -36,6 +37,7 @@ body {
     margin: 0;
     font-size: 24px;
     color: black;
+
 }
 
 .email-in-use {
@@ -167,6 +169,7 @@ form button:hover {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin-top: 150px;
 }
 
 .form-container {
