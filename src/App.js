@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
+import SignIn from "./Components/SignIn";
 
 
 
@@ -72,11 +73,12 @@ function App() {
         setCurrentId={setCurrentId}
         inventoryItems={inventoryItems}
       />
-      {/* <Home
+      <Home
         inventoryItems={inventoryItems}
         onDelete={onDelete}
         onEdit={onEdit}
-      /> */}
+      />
+ 
     </div>
 
     
