@@ -1,27 +1,41 @@
-body{
-    background-color:rgb(201, 220, 226);
+body {
+    background-color: rgb(225, 228, 229);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .header-container {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
+    height: 150px;
     display: flex;
     align-items: center;
     padding-left: 10px;
-    justify-content: space-between;
-    
+    justify-content: flex-start;
+    background-color: white;
+    z-index: 10;
 }
 
 .logo-header {
-    height: 200px; 
+    height: 100%;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    padding-right: 10px; 
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.header-container h2.header-title {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    color: black;
 }
 
 .email-in-use {
@@ -30,6 +44,7 @@ body{
     padding: 10px 20px;
     border-radius: 5px;
     background-color: gray;
+    color: white;
 }
 
 .sign-out {
@@ -43,15 +58,13 @@ body{
     font-weight: bold;
 }
 
-.sign-out:hover{
+.sign-out:hover {
     background-color: rgb(95, 39, 39);
 }
 
-.sign-out:active{
+.sign-out:active {
     background-color: rgb(255, 34, 0);
 }
-
-
 
 .edit {
     background-color: greenyellow;
@@ -85,7 +98,6 @@ form {
     justify-content: center;
     width: 100%;
     padding: 10px;
-
 }
 
 form input {
@@ -96,7 +108,6 @@ form input {
     width: 400px;
 }
 
-
 form button {
     padding: 10px;
     margin: 10px;
@@ -106,7 +117,6 @@ form button {
     margin-top: 20px;
     color: white;
     width: 440px;
-    margin-top: 20px;
     font-size: larger;
 }
 
@@ -116,23 +126,24 @@ form button:hover {
     font-size: x-large;
 }
 
-.home-container{
+.home-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 20vh;
 }
 
-.logo-home{
-    height: 50vh;
-    display: flex;
-    justify-content: center;
+.logo-home {
+    height: 20%;
+    width: auto;
+    max-height: 40vh;
     margin: 0 auto;
-    margin-top: 10vh;
-    flex-direction: column;
+    max-width: 100%;
 }
 
-.home-buttons{
+.home-buttons {
     background: rgb(60, 102, 227);
     padding: 20px;
     width: 100%;
@@ -144,10 +155,37 @@ form button:hover {
     font-size: larger;
 }
 
-.home-text{
+.home-text {
     margin: 0;
     margin-top: 20px;
     color: blue;
     font-weight: 600;
     text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.link-btn {
+    margin-top: 20px;
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }
