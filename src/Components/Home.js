@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './Style.css';
 import Header from "./Header";
 import logo from './logo.jpg';
@@ -10,6 +10,7 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
         rows.push(
             <tr key={id}>
                 <td>{inventoryItems[id].id}</td>
+                <td>{inventoryItems[id].picture}</td>
                 <td>{inventoryItems[id].products}</td>
                 <td>{inventoryItems[id].description}</td>
                 <td>{inventoryItems[id].quantity}</td>
@@ -25,6 +26,8 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
 
 const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredItems, setFilteredItems] = useState([]);
 
     const handleSignUp = () => {
         navigate('/signup');
@@ -33,14 +36,55 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const handleSignIn = () => {
         navigate('/signin');
     };
- 
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleSearch = () => {
+        if (searchQuery.trim() !== "") {
+            const filtered = Object.values(inventoryItems).filter(item =>
+                item.products.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.description.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setFilteredItems(filtered);
+        } else {
+            setFilteredItems([]);
+        }
+    };
+
+    const clearSearch = () => {
+        setSearchQuery("");
+        setFilteredItems([]);
+    };
+
+    const goToInventoryUser = () => {
+        navigate('/inventoryuser');
+    };
+
+    const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
 
     return (
         <div className="home-container">
-            {email && <Header email={email} handleSignOut={handleSignOut}/>}
-            <div >
+            {email && <Header email={email} handleSignOut={handleSignOut} />}
+            <div>
                 {email ? (
                     <div className="content-container">
+                        <div className="search-inventory-container">
+                            <div className="search-container">
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    className="search-input"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
+                                />
+                                <button className="search-button" onClick={handleSearch}>Search</button>
+                                <button className="clear-button" onClick={clearSearch}>Clear</button>
+                            </div>
+
+                            <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory User</button>
+                        </div>
                         <table>
                             <thead>
                                 <tr>
@@ -53,9 +97,8 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {generateRows(inventoryItems, onDelete, onEdit)}
+                                {generateRows(itemsToDisplay, onDelete, onEdit)}
                             </tbody>
-                            
                         </table>
                     </div>
                 ) : (
