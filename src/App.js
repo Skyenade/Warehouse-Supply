@@ -7,6 +7,7 @@ import InventoryUser from './Components/InventoryUser';
 import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import UserManagement from "./Components/UserManagement";
+import InventoryAdmin from "./Components/InventoryAdmin";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -94,8 +95,21 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+              /> 
+             } 
+             />
+            
+            <Route
+            path="/InventoryAdmin"
+            element={
+              <InventoryAdmin
+                addorEditItems={addorEditItems}
+                currentId={currentId}
+                inventoryItems={inventoryItems}
+                email={email}
               />
             } 
+
           />
           <Route 
             path="/signup" 
@@ -115,6 +129,7 @@ function App() {
               <UserManagement setUserEmail={setUserEmail} />
             }
           />
+         
         </Routes>
       </Router>      
     </div>

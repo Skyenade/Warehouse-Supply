@@ -14,17 +14,17 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
                 <td>{inventoryItems[id].products}</td>
                 <td>{inventoryItems[id].description}</td>
                 <td>{inventoryItems[id].quantity}</td>
-                {/* <td>
+                <td>
                     <button className="edit" onClick={() => onEdit(id)}>Edit</button>
                     <button className="delete" onClick={() => onDelete(id)}>Delete</button>
-                </td> */}
+                </td>
             </tr>
         );
     }
     return rows;
 };
 
-const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
+const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
@@ -59,7 +59,7 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     };
 
     const goToInventoryUser = () => {
-        navigate('/inventoryuser');
+        navigate('/InventoryAdmin');
     };
 
     const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
@@ -83,7 +83,7 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
                                 <button className="clear-button" onClick={clearSearch}>Clear</button>
                             </div>
 
-                            <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory User</button>
+                            <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
                         </div>
                         <table>
                             <thead>
@@ -93,7 +93,7 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
                                     <th>Product</th>
                                     <th>Description</th>
                                     <th>Quantity</th>
-                                    {/* <th>Actions</th> */}
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,4 +114,4 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     );
 };
 
-export default Home;
+export default HomeAdmin;
