@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import './Style.css';
-import Header from "./Header";
 import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 
 
-const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
+const Home = () => {
     const navigate = useNavigate();
-
 
     const handleSignUp = () => {
         navigate('/signup');
@@ -16,8 +14,6 @@ const Home = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const handleSignIn = () => {
         navigate('/signin');
     };
-
-
 
     return (
         <div className="home-container">

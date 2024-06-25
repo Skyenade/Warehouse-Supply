@@ -9,6 +9,7 @@ import SignIn from "./Components/SignIn";
 import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
 import HomeAdmin from "./Components/HomeAdmin";
+import Home from "./Components/Home";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -76,6 +77,18 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                email={email}
+                handleSignOut={handleSignOut}
+              />
+            }
+          />
           <Route 
             path="/homeuser" 
             element={
