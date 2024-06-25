@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home';
+import HomeUser from './Components/HomeUser';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
@@ -8,6 +8,7 @@ import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
+import HomeAdmin from "./Components/HomeAdmin";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -76,9 +77,9 @@ function App() {
       <Router>
         <Routes>
           <Route 
-            path="/" 
+            path="/homeuser" 
             element={
-              <Home
+              <HomeUser
                 inventoryItems={inventoryItems}
                 onDelete={onDelete}
                 onEdit={onEdit}
@@ -86,6 +87,18 @@ function App() {
                 handleSignOut={handleSignOut}
               />
             } 
+          />
+          <Route
+            path="/homeadmin"
+            element={
+              <HomeAdmin
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                email={email}
+                handleSignOut={handleSignOut}
+              />
+            }
           />
           <Route 
             path="/inventoryuser" 
