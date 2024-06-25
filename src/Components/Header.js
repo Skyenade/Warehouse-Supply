@@ -4,9 +4,9 @@ import logo from './logo.jpg';
 import { useLocation } from "react-router-dom";
 
 const Header = ({ email, handleSignOut }) => {
-    const location = useLocation();
 
-    const showHeaderRight = location.pathname === "/" && email;
+    const location = window.location.pathname;
+    const showHeaderRight = location !== "/signup" && location !== "/signin";
 
     return (
         <div className="header-container">

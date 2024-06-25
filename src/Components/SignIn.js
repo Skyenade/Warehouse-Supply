@@ -16,7 +16,8 @@ const SignIn = ({ setUserEmail }) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             setUserEmail(userCredential.user.email); // Set user email in App component state
-            navigate('/'); // Redirect to the Home page
+            
+            (email === "admin@gmail.com" ? navigate('/homeadmin') : navigate('/homeuser'))
         } catch (error) {
             setError(error.message);
         }

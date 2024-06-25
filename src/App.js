@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home';
+import HomeUser from './Components/HomeUser';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 import { database } from "./firebase";
 import InventoryUser from './Components/InventoryUser';
 import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import UserManagement from "./Components/UserManagement";
+import InventoryAdmin from "./Components/InventoryAdmin";
+import HomeAdmin from "./Components/HomeAdmin";
+import Home from "./Components/Home";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -74,8 +77,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <Home
                 inventoryItems={inventoryItems}
@@ -84,7 +87,31 @@ function App() {
                 email={email}
                 handleSignOut={handleSignOut}
               />
+            }
+          />
+          <Route 
+            path="/homeuser" 
+            element={
+              <HomeUser
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                email={email}
+                handleSignOut={handleSignOut}
+              />
             } 
+          />
+          <Route
+            path="/homeadmin"
+            element={
+              <HomeAdmin
+                inventoryItems={inventoryItems}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                email={email}
+                handleSignOut={handleSignOut}
+              />
+            }
           />
           <Route 
             path="/inventoryuser" 
@@ -94,8 +121,21 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+              /> 
+             } 
+             />
+            
+            <Route
+            path="/InventoryAdmin"
+            element={
+              <InventoryAdmin
+                addorEditItems={addorEditItems}
+                currentId={currentId}
+                inventoryItems={inventoryItems}
+                email={email}
               />
             } 
+
           />
           <Route 
             path="/signup" 
@@ -115,6 +155,7 @@ function App() {
               <UserManagement setUserEmail={setUserEmail} />
             }
           />
+         
         </Routes>
       </Router>      
     </div>
