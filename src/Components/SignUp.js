@@ -16,8 +16,11 @@ const SignUp = () => {
         e.preventDefault();
         try{
             const userCredential = await createUserWithEmailAndPassword(auth,email,password);
-            // (email === "admin@gmail.com" ? navigate('/homeadmin',{state:{email:userCredential.user.email}}) : navigate('/homeuser'),{state:{email:userCredential.user.email}})
-        } catch (error){
+            if (email === "admin@gmail.com") {
+                navigate('/homeadmin', { state: { email: userCredential.user.email } });
+            } else {
+                navigate('/homeuser', { state: { email: userCredential.user.email } });
+            }        } catch (error){
             setError(error.message);
         }
     };
