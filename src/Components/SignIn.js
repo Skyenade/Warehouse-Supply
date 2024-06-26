@@ -17,7 +17,11 @@ const SignIn = ({ setUserEmail }) => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             setUserEmail(userCredential.user.email); // Set user email in App component state
             
-            (email === "admin@gmail.com" ? navigate('/homeadmin') : navigate('/homeuser'))
+            if (email === "admin@gmail.com") {
+                navigate('/homeadmin', { state: { email: userCredential.user.email } });
+            } else {
+                navigate('/homeuser', { state: { email: userCredential.user.email } });
+            }
         } catch (error) {
             setError(error.message);
         }
