@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 const initializeFieldsValues = {
     products: "",
-    id: "",
-    quantity: ""
+    id: "", // Keep id as string to handle auto-increment correctly
+    quantity: "",
+    description: "",
+    picture: ""
 };
 const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, handleSignOut  }) => {
 
     const [values, setValues] = useState(initializeFieldsValues);
+    const [maxId, setMaxId] = useState(0);
 
     useEffect(() => {
+        // Calculate the maximum id currently in inventoryItems
+        let currentMaxId = 0;
+        for (const key in inventoryItems) {
+            if (parseInt(inventoryItems[key].id) > currentMaxId) {
+                currentMaxId = parseInt(inventoryItems[key].id);
+            }
+        }
+        setMaxId(currentMaxId);
+
         if (currentId === "" || !inventoryItems[currentId]) {
-            setValues(initializeFieldsValues);
+            // Setting id for new entry (auto-increment)
+            setValues({ ...initializeFieldsValues, id: (currentMaxId + 1).toString() });
         } else {
             setValues(inventoryItems[currentId]);
         }
@@ -29,7 +43,8 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
     const handleSubmit = (e) => {
         e.preventDefault();
         addorEditItems(values);
-        setValues(initializeFieldsValues);
+        setValues({ ...initializeFieldsValues, id: (maxId + 1).toString() }); // Reset id for next new entry
+        navigate('/homeadmin');
     };
 
     return (
@@ -46,11 +61,12 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
                     required
                 />
                 <input
-                    type="number"
+                    type="text"
                     name="id"
                     placeholder="Enter the Id of the product"
                     value={values.id}
                     onChange={handleChange}
+                    disabled // Disable manual editing of ID
                     required
                 />
                 <input
@@ -58,6 +74,22 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
                     name="quantity"
                     placeholder="Enter the quantity"
                     value={values.quantity}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Enter the description"
+                    value={values.description}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="picture"
+                    placeholder="Enter the image url"
+                    value={values.picture}
                     onChange={handleChange}
                     required
                 />
