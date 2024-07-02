@@ -10,7 +10,6 @@ import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
 import HomeAdmin from "./Components/HomeAdmin";
 import Home from "./Components/Home";
-import EditItemForm from "./Components/EditItemForm";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -32,12 +31,11 @@ function App() {
     setEmail(userEmail);
   };
 
-  const handleSignOut = () => {
-    setEmail("");
-  };
+ 
 
   const addorEditItems = (obj) => {
-    if (currentId === "") {
+    if (!obj.id) {
+      // If obj does not have an id, generate a new one.
       const newItemRef = push(ref(database, 'Inventory'));
       update(newItemRef, obj)
         .then(() => {
@@ -47,7 +45,8 @@ function App() {
           console.log(error);
         });
     } else {
-      update(ref(database, 'Inventory/' + currentId), obj)
+      // If obj has an id, update the existing item.
+      update(ref(database, 'Inventory/' + obj.id), obj)
         .then(() => {
           console.log("data updated");
         })
@@ -96,7 +95,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                handleSignOut={handleSignOut}
               />
             }
           />
@@ -108,7 +106,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                handleSignOut={handleSignOut}
               />
             } 
           />
@@ -120,7 +117,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                handleSignOut={handleSignOut}                
               />
             }
           />
