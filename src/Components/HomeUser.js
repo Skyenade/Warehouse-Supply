@@ -4,7 +4,7 @@ import Header from "./Header";
 // import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 
-const generateRows = (inventoryItems, onDelete, onEdit) => {
+const generateRows = (inventoryItems) => {
     const rows = [];
     for (let id in inventoryItems) {
         rows.push(
