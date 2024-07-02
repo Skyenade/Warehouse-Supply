@@ -3,8 +3,7 @@ import './Style.css';
 import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 
-
-const Home = () => {
+const Home = ({ email, setEmail }) => {
     const navigate = useNavigate();
 
     const handleSignUp = () => {
@@ -15,13 +14,27 @@ const Home = () => {
         navigate('/signin');
     };
 
+    const handleSignOut = () => {
+        setEmail("");
+        navigate('/');
+    };
+
     return (
         <div className="home-container">
-            <img src={logo} alt="Logo" className="logo-home" />
-            <button onClick={handleSignIn} className="home-buttons">Sign In</button>
-            <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
-            <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
-        </div >
+            {email ? (
+                <div>
+                    <p>Welcome, {email}</p>
+                    <button onClick={handleSignOut} className="home-buttons">Sign Out</button>
+                </div>
+            ) : (
+                <div>
+                    <img src={logo} alt="Logo" className="logo-home" />
+                    <button onClick={handleSignIn} className="home-buttons">Sign In</button>
+                    <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
+                    <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
+                </div>
+            )}
+        </div>
     );
 };
 

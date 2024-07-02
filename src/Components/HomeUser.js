@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Style.css';
 import Header from "./Header";
-import logo from './logo.jpg';
+// import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 
 const generateRows = (inventoryItems, onDelete, onEdit) => {
@@ -13,22 +13,23 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
                 <td>{inventoryItems[id].picture}</td>
                 <td>{inventoryItems[id].products}</td>
                 <td>{inventoryItems[id].description}</td>
-                <td>{inventoryItems[id].quantity}</td>
-                {/* <td>
-                    <button className="edit" onClick={() => onEdit(id)}>Edit</button>
-                    <button className="delete" onClick={() => onDelete(id)}>Delete</button>
-                </td> */}
+                <td>{inventoryItems[id].quantity}</td>                
             </tr>
         );
     }
     return rows;
 };
 
-const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
+const HomeUser = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredItems, setFilteredItems] = useState(inventoryItems);
 
+
+    const handleSignOut = () => {
+        setEmail("");
+        navigate('/');
+    };
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
@@ -47,13 +48,6 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =>
         }
     };
 
-    const handleSignUp = () => {
-        navigate('/signup');
-    };
-
-    const handleSignIn = () => {
-        navigate('/signin');
-    };
 
     const goToInventoryUser = () => {
         navigate('/inventoryuser');

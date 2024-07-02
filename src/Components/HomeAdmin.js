@@ -28,7 +28,7 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
     return rows;
 };
 
-const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
+const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
@@ -40,6 +40,11 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
 
     const handleSignIn = () => {
         navigate('/signin');
+    };
+
+    const handleSignOut = () => {
+        setEmail("");
+        navigate('/');
     };
 
     const handleSearchChange = (e) => {

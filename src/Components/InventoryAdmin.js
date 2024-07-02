@@ -4,18 +4,23 @@ import { useNavigate } from "react-router-dom";
 
 const initializeFieldsValues = {
     products: "",
-    id: "", // Keep id as string to handle auto-increment correctly
+    id: "",
     quantity: "",
     description: "",
     picture: ""
 };
-const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, handleSignOut  }) => {
+const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setEmail   }) => {
 
+    const navigate = useNavigate();
     const [values, setValues] = useState(initializeFieldsValues);
     const [maxId, setMaxId] = useState(0);
 
-    useEffect(() => {
-        // Calculate the maximum id currently in inventoryItems
+    const handleSignOut = () => {
+        setEmail("");
+        navigate('/');
+    };
+
+    useEffect(() => {        
         let currentMaxId = 0;
         for (const key in inventoryItems) {
             if (parseInt(inventoryItems[key].id) > currentMaxId) {
@@ -24,8 +29,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
         }
         setMaxId(currentMaxId);
 
-        if (currentId === "" || !inventoryItems[currentId]) {
-            // Setting id for new entry (auto-increment)
+        if (currentId === "" || !inventoryItems[currentId]) {        
             setValues({ ...initializeFieldsValues, id: (currentMaxId + 1).toString() });
         } else {
             setValues(inventoryItems[currentId]);
@@ -43,7 +47,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
     const handleSubmit = (e) => {
         e.preventDefault();
         addorEditItems(values);
-        setValues({ ...initializeFieldsValues, id: (maxId + 1).toString() }); // Reset id for next new entry
+        setValues({ ...initializeFieldsValues, id: (maxId + 1).toString() });
         navigate('/homeadmin');
     };
 
@@ -66,7 +70,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, hand
                     placeholder="Enter the Id of the product"
                     value={values.id}
                     onChange={handleChange}
-                    disabled // Disable manual editing of ID
+                    disabled
                     required
                 />
                 <input
