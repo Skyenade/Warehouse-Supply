@@ -38,7 +38,8 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =>
         if (searchQuery.trim() !== "") {
             const filtered = Object.values(inventoryItems).filter(item =>
                 item.products.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.description.toLowerCase().includes(searchQuery.toLowerCase())
+                item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.id.includes(searchQuery)
             );
             setFilteredItems(filtered);
         } else {
