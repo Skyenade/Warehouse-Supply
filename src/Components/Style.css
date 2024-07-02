@@ -199,6 +199,7 @@ table {
     width: 80vw;
     border-collapse: collapse;
     text-align: center;
+    background-color: white;
 }
 table thead tr {
     background-color: rgb(60, 102, 227);
@@ -213,14 +214,9 @@ table th,
 tbody tr {
     border-bottom: 1px solid #dddddd;
 }
-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
+
 table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
-}
-table tbody tr:hover {
-    background-color: #f1f1f1;
 }
 
 .search-inventory-container{
@@ -262,4 +258,8 @@ table tbody tr:hover {
 
 .form-group{
     margin-top: 200px;
+}
+.picture{
+    max-height: 70px;
+    max-width: 70px;
 }
