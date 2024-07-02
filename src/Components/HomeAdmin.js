@@ -64,6 +64,10 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
     const goToInventoryUser = () => {
         navigate('/InventoryAdmin');
     };
+    // const handleEdit = (id) => {
+    //     setCurrentId(id);
+    //     navigate('/InventoryAdmin');
+    // };
 
     const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
 
