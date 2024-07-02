@@ -9,7 +9,7 @@ const initializeFieldsValues = {
     description: "",
     picture: ""
 };
-const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setEmail   }) => {
+const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setEmail }) => {
 
     const navigate = useNavigate();
     const [values, setValues] = useState(initializeFieldsValues);

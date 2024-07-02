@@ -31,8 +31,11 @@ function App() {
     setEmail(userEmail);
   };
 
+ 
+
   const addorEditItems = (obj) => {
-    if (currentId === "") {
+    if (!obj.id) {
+      // If obj does not have an id, generate a new one.
       const newItemRef = push(ref(database, 'Inventory'));
       update(newItemRef, obj)
         .then(() => {
@@ -42,7 +45,8 @@ function App() {
           console.log(error);
         });
     } else {
-      update(ref(database, 'Inventory/' + currentId), obj)
+      // If obj has an id, update the existing item.
+      update(ref(database, 'Inventory/' + obj.id), obj)
         .then(() => {
           console.log("data updated");
         })
@@ -91,7 +95,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                setEmail={setEmail}
               />
             }
           />
@@ -103,7 +106,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                setEmail={setEmail}
               />
             } 
           />
@@ -115,7 +117,6 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                setEmail={setEmail}
               />
             }
           />
@@ -127,7 +128,6 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
-                setEmail={setEmail}
               /> 
              } 
              />
@@ -140,9 +140,9 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
-                setEmail={setEmail}
               />
             } 
+
           />
           <Route 
             path="/signup" 

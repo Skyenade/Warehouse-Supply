@@ -81,7 +81,6 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
                             <th>Product</th>
                             <th>Description</th>
                             <th>Quantity</th>
-                            {/* <th>Actions</th> */}
                         </tr>
                     </thead>
                     <tbody>
