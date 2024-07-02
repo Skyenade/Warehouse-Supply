@@ -3,6 +3,7 @@ import './Style.css';
 import Header from "./Header";
 import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
+import EditItemForm from './EditItemForm';
 
 const generateRows = (inventoryItems, onDelete, onEdit) => {
     const rows = [];
@@ -28,6 +29,7 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
+    const [editingItem, setEditingItem] = useState(null);
 
     const handleSignUp = () => {
         navigate('/signup');
@@ -38,6 +40,7 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
     };
 
     const handleSearchChange = (e) => {
+        e.preventDefault();
         setSearchQuery(e.target.value);
     };
 
@@ -53,16 +56,25 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
         }
     };
 
-    const clearSearch = () => {
-        setSearchQuery("");
-        setFilteredItems([]);
-    };
-
     const goToInventoryUser = () => {
         navigate('/InventoryAdmin');
     };
 
     const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
+
+    const handleEdit = (id) => {
+        const itemToEdit = inventoryItems[id];
+        setEditingItem(itemToEdit);
+    };
+
+    const handleSave = (editedItem) => {
+        onEdit(editedItem.id, editedItem);
+        setEditingItem(null);
+    };
+
+    const handleCancel = () => {
+        setEditingItem(null);
+    };
 
     return (
         <div className="home-container">
@@ -80,26 +92,29 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =
                                     onChange={handleSearchChange}
                                 />
                                 <button className="search-button" onClick={handleSearch}>Search</button>
-                                <button className="clear-button" onClick={clearSearch}>Clear</button>
                             </div>
 
                             <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Picture</th>
-                                    <th>Product</th>
-                                    <th>Description</th>
-                                    <th>Quantity</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {generateRows(itemsToDisplay, onDelete, onEdit)}
-                            </tbody>
-                        </table>
+                        {editingItem ? (
+                            <EditItemForm item={editingItem} onSave={handleSave} onCancel={handleCancel} />
+                        ) : (
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Picture</th>
+                                        <th>Product</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {generateRows(itemsToDisplay, onDelete, handleEdit)}
+                                </tbody>
+                            </table>
+                        )}
                     </div>
                 ) : (
                     <div>

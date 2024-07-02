@@ -27,15 +27,8 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
 const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredItems, setFilteredItems] = useState([]);
+    const [filteredItems, setFilteredItems] = useState(inventoryItems);
 
-    const handleSignUp = () => {
-        navigate('/signup');
-    };
-
-    const handleSignIn = () => {
-        navigate('/signin');
-    };
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
@@ -49,13 +42,16 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =>
             );
             setFilteredItems(filtered);
         } else {
-            setFilteredItems([]);
+            setFilteredItems(inventoryItems);
         }
     };
 
-    const clearSearch = () => {
-        setSearchQuery("");
-        setFilteredItems([]);
+    const handleSignUp = () => {
+        navigate('/signup');
+    };
+
+    const handleSignIn = () => {
+        navigate('/signin');
     };
 
     const goToInventoryUser = () => {
@@ -78,7 +74,6 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, handleSignOut }) =>
                             onChange={handleSearchChange}
                         />
                         <button className="search-button" onClick={handleSearch}>Search</button>
-                        <button className="clear-button" onClick={clearSearch}>Clear</button>
                     </div>
 
                     <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory User</button>
