@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import './Style.css';
 import Header from "./Header";
 import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,11 @@ const generateRows = (inventoryItems, onDelete, onEdit) => {
         rows.push(
             <tr key={id}>
                 <td>{inventoryItems[id].id}</td>
-                <td>{inventoryItems[id].picture}</td>
+                <td>
+                    {inventoryItems[id].picture && (
+                        <img className="picture"src={inventoryItems[id].picture} alt="Preview"  />
+                    )}
+                </td>
                 <td>{inventoryItems[id].products}</td>
                 <td>{inventoryItems[id].description}</td>
                 <td>{inventoryItems[id].quantity}</td>
