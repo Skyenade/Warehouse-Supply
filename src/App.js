@@ -10,12 +10,13 @@ import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
 import HomeAdmin from "./Components/HomeAdmin";
 import Home from "./Components/Home";
-import EditItemForm from "./Components/EditItemForm";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
   const [currentId, setCurrentId] = useState("");
   const [email, setEmail] = useState("");
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const ItemsRef = ref(database, 'Inventory');
@@ -34,6 +35,7 @@ function App() {
 
   const handleSignOut = () => {
     setEmail("");
+    // navigate("/");
   };
 
   const addorEditItems = (obj) => {
@@ -132,6 +134,7 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+                handleSignOut={handleSignOut}
               /> 
              } 
              />
@@ -144,6 +147,7 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+                handleSignOut={handleSignOut}
               />
             } 
 
