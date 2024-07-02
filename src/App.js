@@ -10,6 +10,7 @@ import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
 import HomeAdmin from "./Components/HomeAdmin";
 import Home from "./Components/Home";
+import EditItemForm from "./Components/EditItemForm";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -57,8 +58,18 @@ function App() {
     setCurrentId("");
   };
 
-  const onEdit = id => {
-    setCurrentId(id);
+  const onEdit = (id, updatedItem) => {
+    if (updatedItem) {
+      update(ref(database, 'Inventory/' + id), updatedItem)
+        .then(() => {
+          console.log("data updated");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setCurrentId(id);
+    }
   };
 
   const onDelete = id => {
@@ -109,7 +120,7 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
-                handleSignOut={handleSignOut}
+                handleSignOut={handleSignOut}                
               />
             }
           />
