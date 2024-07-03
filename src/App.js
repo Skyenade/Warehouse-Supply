@@ -31,11 +31,8 @@ function App() {
     setEmail(userEmail);
   };
 
- 
-
   const addorEditItems = (obj) => {
     if (!obj.id) {
-      // If obj does not have an id, generate a new one.
       const newItemRef = push(ref(database, 'Inventory'));
       update(newItemRef, obj)
         .then(() => {
@@ -45,7 +42,6 @@ function App() {
           console.log(error);
         });
     } else {
-      // If obj has an id, update the existing item.
       update(ref(database, 'Inventory/' + obj.id), obj)
         .then(() => {
           console.log("data updated");
@@ -59,17 +55,18 @@ function App() {
 
   const onEdit = (id, updatedItem) => {
     if (updatedItem) {
-      update(ref(database, 'Inventory/' + id), updatedItem)
-        .then(() => {
-          console.log("data updated");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        update(ref(database, 'Inventory/' + id), updatedItem)
+            .then(() => {
+                console.log("Data updated");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     } else {
-      setCurrentId(id);
+        setCurrentId(id);
     }
-  };
+};
+
 
   const onDelete = id => {
     if (window.confirm("Are you sure you want to delete?")) {
@@ -95,6 +92,7 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
             }
           />
@@ -106,6 +104,7 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
             } 
           />
@@ -117,6 +116,7 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
             }
           />
@@ -128,6 +128,7 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+                setEmail={setUserEmail}
               /> 
              } 
              />
@@ -140,6 +141,7 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+                setEmail={setUserEmail}
               />
             } 
 
