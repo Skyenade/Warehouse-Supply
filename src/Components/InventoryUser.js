@@ -42,6 +42,8 @@ const InventoryUser = ({ addorEditItems, currentId, inventoryItems,email, setEma
         setValues(initializeFieldsValues);
     };
 
+    
+
     return (
         <div className="form-group">
             <Header email={email} handleSignOut={handleSignOut} />
