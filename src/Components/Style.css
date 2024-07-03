@@ -66,17 +66,17 @@ body {
 }
 
 .edit {
-    background-color: greenyellow;
-    color: black;
+    background-color: rgb(60, 102, 227);
+    color: white;
     border: 1px solid;
     border-radius: 5px;
-    padding: 5px;
+    padding: 6px;
     font-size: larger;
-    margin: 5px;
+    margin: 6px;
 }
 
 .delete {
-    background-color: red;
+    background-color: rgb(134, 46, 46);
     color: white;
     border: 1px solid;
     border-radius: 5px;
