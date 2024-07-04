@@ -61,7 +61,7 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
         <div className="home-container">
             <Header email={email} handleSignOut={handleSignOut} />
             <div className="content-container">
-                <div className="search-inventory-container">
+                <div className="search-inventory-container-user">
                     <div className="search-container">
                         <input
                             type="text"
