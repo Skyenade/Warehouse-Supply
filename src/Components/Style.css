@@ -230,7 +230,15 @@ table tbody tr:last-of-type {
     margin-bottom: 30px;
 }
 
-.search-inventory-container button{
+.search-inventory-container-user{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+
+.search-inventory-container button, .search-inventory-container-user button{
     padding: 10px;
     margin: 10px;
     background-color: rgb(60, 102, 227);
@@ -240,7 +248,7 @@ table tbody tr:last-of-type {
     padding: 10px;
 }
 
-.search-inventory-container button{
+.search-inventory-container button, .search-inventory-container-user button{
     background-color: rgb(41, 88, 229);
 }
 
@@ -257,7 +265,7 @@ table tbody tr:last-of-type {
 }
 
 .go-to-inventory{
-    padding: 10px;
+    padding: 5px;
 }
 
 .form-group{
@@ -276,3 +284,4 @@ table tbody tr:last-of-type {
     width: 100%;
     padding: 10px;
 }
+
