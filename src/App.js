@@ -149,13 +149,13 @@ function App() {
           <Route
             path="/signup"
             element={
-              <SignUp setUserEmail={setUserEmail} />
+              <SignUp setUserEmail={setUserEmail} email={email}/>
             }
           />
           <Route
             path="/signin"
             element={
-              <SignIn setUserEmail={setUserEmail} />
+              <SignIn setUserEmail={setUserEmail} email={email}/>
             }
           />
           <Route

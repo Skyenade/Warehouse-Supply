@@ -84,21 +84,22 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
         <div className="home-container">
             <Header email={email} handleSignOut={handleSignOut} />
             <div className="content-container">
-                <div className="search-inventory-container">
-                    <div className="search-container">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="search-input"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                        />
-                        <button className="search-button" onClick={handleSearch}>Search</button>
+                {!editingItem && (
+                    <div className="search-inventory-container">
+                        <div className="search-container">
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="search-input"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                            />
+                            <button className="search-button" onClick={handleSearch}>Search</button>
+                        </div>
+                        <button className="go-to-inventory" onClick={goUserManagement}>UserManagement</button>
+                        <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
                     </div>
-                    <button className="go-to-inventory" onClick={goUserManagement}>UserManagement</button>
-
-                    <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
-                </div>
+                )}
                 {editingItem ? (
                     <EditItemForm item={editingItem} onSave={handleSave} onCancel={handleCancel} />
                 ) : (

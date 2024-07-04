@@ -7,7 +7,7 @@ import { database } from '../firebase';
 import './Style.css';
 import Header from './Header';
 
-const SignUp = () => {
+const SignUp = ({setUserEmail }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -18,6 +18,7 @@ const SignUp = () => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             await push(ref(database, 'currentEmails'), { email });
+            setUserEmail(userCredential.user.email);
             
             if (email === "admin@gmail.com") {
                 navigate('/homeadmin', { state: { email: userCredential.user.email } });

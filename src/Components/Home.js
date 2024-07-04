@@ -21,19 +21,12 @@ const Home = ({ email, setEmail }) => {
 
     return (
         <div className="home-container">
-            {email ? (
-                <div>
-                    <p>Welcome, {email}</p>
-                    <button onClick={handleSignOut} className="home-buttons">Sign Out</button>
-                </div>
-            ) : (
-                <div>
-                    <img src={logo} alt="Logo" className="logo-home" />
-                    <button onClick={handleSignIn} className="home-buttons">Sign In</button>
-                    <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
-                    <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
-                </div>
-            )}
+            <div>
+                <img src={logo} alt="Logo" className="logo-home" />
+                <button onClick={handleSignIn} className="home-buttons">Sign In</button>
+                <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
+                <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
+            </div>
         </div>
     );
 };

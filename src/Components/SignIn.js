@@ -7,7 +7,7 @@ import { database } from '../firebase';
 import './Style.css';
 import Header from "./Header";
 
-const SignIn = ({ setUserEmail }) => {
+const SignIn = ({setUserEmail }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
