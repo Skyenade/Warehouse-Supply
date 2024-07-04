@@ -55,17 +55,17 @@ function App() {
 
   const onEdit = (id, updatedItem) => {
     if (updatedItem) {
-        update(ref(database, 'Inventory/' + id), updatedItem)
-            .then(() => {
-                console.log("Data updated");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+      update(ref(database, 'Inventory/' + id), updatedItem)
+        .then(() => {
+          console.log("Data updated");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
-        setCurrentId(id);
+      setCurrentId(id);
     }
-};
+  };
 
 
   const onDelete = id => {
@@ -96,8 +96,8 @@ function App() {
               />
             }
           />
-          <Route 
-            path="/homeuser" 
+          <Route
+            path="/homeuser"
             element={
               <HomeUser
                 inventoryItems={inventoryItems}
@@ -106,7 +106,7 @@ function App() {
                 email={email}
                 setEmail={setUserEmail}
               />
-            } 
+            }
           />
           <Route
             path="/homeadmin"
@@ -120,8 +120,8 @@ function App() {
               />
             }
           />
-          <Route 
-            path="/inventoryuser" 
+          <Route
+            path="/inventoryuser"
             element={
               <InventoryUser
                 addorEditItems={addorEditItems}
@@ -129,11 +129,11 @@ function App() {
                 inventoryItems={inventoryItems}
                 email={email}
                 setEmail={setUserEmail}
-              /> 
-             } 
-             />
-            
-            <Route
+              />
+            }
+          />
+
+          <Route
             path="/InventoryAdmin"
             element={
               <InventoryAdmin
@@ -143,14 +143,14 @@ function App() {
                 email={email}
                 setEmail={setUserEmail}
               />
-            } 
+            }
 
           />
-          <Route 
-            path="/signup" 
+          <Route
+            path="/signup"
             element={
               <SignUp setUserEmail={setUserEmail} />
-            } 
+            }
           />
           <Route
             path="/signin"
@@ -158,15 +158,17 @@ function App() {
               <SignIn setUserEmail={setUserEmail} />
             }
           />
-             <Route
+          <Route
             path="/usermanagement"
             element={
-              <UserManagement setUserEmail={setUserEmail} />
+              <UserManagement setUserEmail={setUserEmail}
+                email={email}
+                setEmail={setUserEmail} />
             }
           />
-         
+
         </Routes>
-      </Router>      
+      </Router>
     </div>
   );
 }

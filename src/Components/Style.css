@@ -70,9 +70,10 @@ body {
     color: white;
     border: 1px solid;
     border-radius: 5px;
-    padding: 6px;
+    padding: 10px;
     font-size: larger;
     margin: 6px;
+    width: 80px;
 }
 
 .delete {
@@ -80,9 +81,10 @@ body {
     color: white;
     border: 1px solid;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     font-size: larger;
     margin: 5px;
+    width: 80px;
 }
 
 h1 {
@@ -223,7 +225,7 @@ table tbody tr:last-of-type {
 
 .search-inventory-container{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
     margin: 10px;
     margin-bottom: 30px;
 }

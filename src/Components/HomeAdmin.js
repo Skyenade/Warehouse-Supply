@@ -60,6 +60,10 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
         navigate('/InventoryAdmin');
     };
 
+    const goUserManagement = () => {
+        navigate('/usermanagement');
+    };
+
     const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
 
     const handleEdit = (id) => {
@@ -91,6 +95,7 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
                         />
                         <button className="search-button" onClick={handleSearch}>Search</button>
                     </div>
+                    <button className="go-to-inventory" onClick={goUserManagement}>UserManagement</button>
 
                     <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
                 </div>
