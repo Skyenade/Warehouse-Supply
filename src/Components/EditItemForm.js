@@ -11,7 +11,8 @@ const EditItemForm = ({ item, onSave, onCancel }) => {
         }));
     };
 
-    const handleSave = () => {
+    const handleSave = (e) => {
+        e.preventDefault();
         onSave(editedItem);
     };
 
@@ -21,10 +22,10 @@ const EditItemForm = ({ item, onSave, onCancel }) => {
 
     return (
         <div className="edit-container">
-            <h3>Edit Item{item.name}</h3>
+            <h3>Edit Item</h3>
             <form className='edit-form-container' onSubmit={handleSave}>
                 <label>ID:</label>
-                <input type="text" name="id" value={editedItem.id} onChange={handleChange} disabled />
+                <input type="text" name="id" value={editedItem.id} onChange={handleChange} readOnly disabled/>
                 <label>Picture:</label>
                 <input type="text" name="picture" value={editedItem.picture} onChange={handleChange} />
                 <label>Product:</label>
@@ -33,10 +34,9 @@ const EditItemForm = ({ item, onSave, onCancel }) => {
                 <input type="text" name="description" value={editedItem.description} onChange={handleChange} />
                 <label>Quantity:</label>
                 <input type="number" name="quantity" value={editedItem.quantity} onChange={handleChange} />
-                <button onClick={handleSave}>Save</button>
-                <button onClick={onCancel}>Cancel</button>
+                <button type="submit">Save</button>
+                <button type="button" onClick={onCancel}>Cancel</button>
             </form>
-
         </div>
     );
 };

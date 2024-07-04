@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 import EditItemForm from './EditItemForm';
 
@@ -34,14 +33,6 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
     const [filteredItems, setFilteredItems] = useState([]);
     const [editingItem, setEditingItem] = useState(null);
 
-    const handleSignUp = () => {
-        navigate('/signup');
-    };
-
-    const handleSignIn = () => {
-        navigate('/signin');
-    };
-
     const handleSignOut = () => {
         setEmail("");
         navigate('/');
@@ -68,16 +59,16 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
     const goToInventoryUser = () => {
         navigate('/InventoryAdmin');
     };
-    // const handleEdit = (id) => {
-    //     setCurrentId(id);
-    //     navigate('/InventoryAdmin');
-    // };
+
+    const goUserManagement = () => {
+        navigate('/usermanagement');
+    };
 
     const itemsToDisplay = searchQuery.trim() !== "" ? filteredItems : inventoryItems;
 
     const handleEdit = (id) => {
         const itemToEdit = inventoryItems[id];
-        setEditingItem({ ...itemToEdit, id }); // Ensure the ID is included
+        setEditingItem({ ...itemToEdit, id });
     };
 
     const handleSave = (editedItem) => {
@@ -104,6 +95,7 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
                         />
                         <button className="search-button" onClick={handleSearch}>Search</button>
                     </div>
+                    <button className="go-to-inventory" onClick={goUserManagement}>UserManagement</button>
 
                     <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
                 </div>

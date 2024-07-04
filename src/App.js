@@ -31,11 +31,8 @@ function App() {
     setEmail(userEmail);
   };
 
- 
-
   const addorEditItems = (obj) => {
     if (!obj.id) {
-      // If obj does not have an id, generate a new one.
       const newItemRef = push(ref(database, 'Inventory'));
       update(newItemRef, obj)
         .then(() => {
@@ -45,7 +42,6 @@ function App() {
           console.log(error);
         });
     } else {
-      // If obj has an id, update the existing item.
       update(ref(database, 'Inventory/' + obj.id), obj)
         .then(() => {
           console.log("data updated");
@@ -61,7 +57,7 @@ function App() {
     if (updatedItem) {
       update(ref(database, 'Inventory/' + id), updatedItem)
         .then(() => {
-          console.log("data updated");
+          console.log("Data updated");
         })
         .catch((error) => {
           console.log(error);
@@ -70,6 +66,7 @@ function App() {
       setCurrentId(id);
     }
   };
+
 
   const onDelete = id => {
     if (window.confirm("Are you sure you want to delete?")) {
@@ -95,19 +92,21 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
             }
           />
-          <Route 
-            path="/homeuser" 
+          <Route
+            path="/homeuser"
             element={
               <HomeUser
                 inventoryItems={inventoryItems}
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
-            } 
+            }
           />
           <Route
             path="/homeadmin"
@@ -117,22 +116,24 @@ function App() {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 email={email}
+                setEmail={setUserEmail}
               />
             }
           />
-          <Route 
-            path="/inventoryuser" 
+          <Route
+            path="/inventoryuser"
             element={
               <InventoryUser
                 addorEditItems={addorEditItems}
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
-              /> 
-             } 
-             />
-            
-            <Route
+                setEmail={setUserEmail}
+              />
+            }
+          />
+
+          <Route
             path="/InventoryAdmin"
             element={
               <InventoryAdmin
@@ -140,15 +141,16 @@ function App() {
                 currentId={currentId}
                 inventoryItems={inventoryItems}
                 email={email}
+                setEmail={setUserEmail}
               />
-            } 
+            }
 
           />
-          <Route 
-            path="/signup" 
+          <Route
+            path="/signup"
             element={
               <SignUp setUserEmail={setUserEmail} />
-            } 
+            }
           />
           <Route
             path="/signin"
@@ -156,15 +158,17 @@ function App() {
               <SignIn setUserEmail={setUserEmail} />
             }
           />
-             <Route
+          <Route
             path="/usermanagement"
             element={
-              <UserManagement setUserEmail={setUserEmail} />
+              <UserManagement setUserEmail={setUserEmail}
+                email={email}
+                setEmail={setUserEmail} />
             }
           />
-         
+
         </Routes>
-      </Router>      
+      </Router>
     </div>
   );
 }
