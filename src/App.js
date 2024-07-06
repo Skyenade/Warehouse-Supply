@@ -10,6 +10,7 @@ import UserManagement from "./Components/UserManagement";
 import InventoryAdmin from "./Components/InventoryAdmin";
 import HomeAdmin from "./Components/HomeAdmin";
 import Home from "./Components/Home";
+import ForgotPassword from "./Components/ForgotPassword";
 
 function App() {
   const [inventoryItems, setInventoryItems] = useState({});
@@ -94,7 +95,15 @@ function App() {
                 email={email}
                 setEmail={setUserEmail}
               />
+              
             }
+          />
+          <Route
+            path="/reset"
+            element={
+              <ForgotPassword
+            /> }
+
           />
           <Route
             path="/homeuser"

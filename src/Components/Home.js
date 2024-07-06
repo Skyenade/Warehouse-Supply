@@ -19,6 +19,11 @@ const Home = ({ email, setEmail }) => {
         navigate('/');
     };
 
+    const handleReset = () =>{
+        navigate('/reset');
+
+    }
+
     return (
         <div className="home-container">
             <div>
@@ -27,7 +32,13 @@ const Home = ({ email, setEmail }) => {
                 <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
                 <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
             </div>
+
+            <div>
+                <h3 onClick={handleReset}>Forgot password?</h3>
+            </div>
         </div>
+
+        
     );
 };
 

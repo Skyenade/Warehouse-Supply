@@ -183,6 +183,7 @@ form button:hover {
 .error {
     color: red;
     margin-top: 10px;
+    margin-left: 45%;
 }
 
 .link-btn {
