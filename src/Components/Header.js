@@ -5,7 +5,7 @@ import logo from './logo.jpg';
 const Header = ({ email, handleSignOut }) => {    
 
     const location = window.location.pathname;
-    const showHeaderRight = location !== "/signup" && location !== "/signin";
+    const showHeaderRight = location !== "/signup" && location !== "/signin" && location !== "/reset" ;
 
     return (
         <div className="header-container">

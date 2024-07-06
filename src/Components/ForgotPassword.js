@@ -2,6 +2,8 @@ import React from "react";
 import { auth } from "../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import './Style.css';
+import Header from './Header';
 
 function ForgotPassword() {
     const navigate = useNavigate();
@@ -22,7 +24,8 @@ function ForgotPassword() {
     };
 
     return (
-        <div>
+        <div className = 'container'>
+            < Header  />
             <h1><b>Forgot Password</b></h1>
             <form onSubmit={handleSubmit}>
                 <input name="email" type="email" required />
