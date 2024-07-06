@@ -7,7 +7,7 @@ import { database } from '../firebase';
 import './Style.css';
 import Header from "./Header";
 
-const SignIn = ({setUserEmail }) => {
+const SignIn = ({ setUserEmail }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const SignIn = ({setUserEmail }) => {
 
         const bannedUserRef = ref(database, 'bannedUsers/' + email.replace('.', '_'));
         const bannedUserSnapshot = await get(bannedUserRef);
-        
+
         if (bannedUserSnapshot.exists()) {
             setError("This email is banned.");
             return;
@@ -27,7 +27,7 @@ const SignIn = ({setUserEmail }) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             setUserEmail(userCredential.user.email);
-            
+
             if (email === "admin@gmail.com") {
                 navigate('/homeadmin', { state: { email: userCredential.user.email } });
             } else {
@@ -37,6 +37,9 @@ const SignIn = ({setUserEmail }) => {
             setError(error.message);
         }
     };
+
+ 
+
 
     return (
         <div className="container">
@@ -65,7 +68,11 @@ const SignIn = ({setUserEmail }) => {
                     You don't have an account? Sign up here
                 </button>
             </div>
+
+            
         </div>
+
+
     );
 };
 
