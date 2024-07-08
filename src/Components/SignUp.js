@@ -40,7 +40,7 @@ const SignUp = ({setUserEmail }) => {
                 <button type='submit'>Sign Up</button>
             </form>
             {error && <p className='error'>{error}</p>}
-            <button className='link-btn' onClick={() => navigate("/signin")}>You already have an account? LogIn</button>
+            <p className='link-btn' onClick={() => navigate("/signin")}>You already have an account? LogIn</p>
         </div>
     );
 }

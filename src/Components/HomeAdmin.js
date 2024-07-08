@@ -96,8 +96,8 @@ const HomeAdmin = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
                             />
                             <button className="search-button" onClick={handleSearch}>Search</button>
                         </div>
-                        <button className="go-to-inventory" onClick={goUserManagement}>UserManagement</button>
-                        <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory Admin</button>
+                        <button className="go-to-inventory" onClick={goUserManagement}>User Management</button>
+                        <button className="go-to-inventory" onClick={goToInventoryUser}>Add Inventory</button>
                     </div>
                 )}
                 {editingItem ? (

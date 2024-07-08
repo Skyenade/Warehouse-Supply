@@ -54,7 +54,7 @@ const InventoryUser = ({ addorEditItems, currentId, inventoryItems, email, setEm
     return (
         <div className="form-group">
             <Header email={email} handleSignOut={handleSignOut} />
-            <h1>Report Changes</h1>
+            <h1>Add a new item</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

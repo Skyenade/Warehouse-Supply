@@ -15,7 +15,7 @@ function ForgotPassword() {
         try {
             await sendPasswordResetEmail(auth, emailVal);
             console.log("Email sent"); 
-            alert("Check your Email");
+            alert("If you have an account, you will receive an email with instructions to change the password.");
             navigate('/signin');
         } catch (err) {
             console.log("Error:", err); 
@@ -25,10 +25,10 @@ function ForgotPassword() {
 
     return (
         <div className = 'container'>
-            < Header  />
-            <h1><b>Forgot Password</b></h1>
+            <Header/>
+            <h1>Forgot Password</h1>
             <form onSubmit={handleSubmit}>
-                <input name="email" type="email" required />
+                <input name="email" type="email" placeholder="Enter your email" required />
                 <button type="submit">Reset</button>
             </form>
         </div>

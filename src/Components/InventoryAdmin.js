@@ -54,8 +54,9 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setE
     return (
         <div className="form-group">
             <Header email={email} handleSignOut={handleSignOut} />
-            <h1>Report Changes</h1>
+            <h1>Add a new item</h1>
             <form onSubmit={handleSubmit}>
+            <label>Product:</label>
                 <input
                     type="text"
                     name="products"
@@ -64,6 +65,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setE
                     onChange={handleChange}
                     required
                 />
+                <label>ID:</label>
                 <input
                     type="text"
                     name="id"
@@ -73,6 +75,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setE
                     disabled
                     required
                 />
+                <label>Quantity:</label>
                 <input
                     type="number"
                     name="quantity"
@@ -81,6 +84,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setE
                     onChange={handleChange}
                     required
                 />
+                <label>Description:</label>
                 <input
                     type="text"
                     name="description"
@@ -89,6 +93,7 @@ const InventoryAdmin = ({ addorEditItems, currentId, inventoryItems, email, setE
                     onChange={handleChange}
                     required
                 />
+                <label>Picture:</label>
                 <input
                     type="text"
                     name="picture"

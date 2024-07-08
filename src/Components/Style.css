@@ -171,6 +171,7 @@ form button:hover {
     flex-direction: column;
     min-height: 100vh;
     margin-top: 150px;
+    align-items: center;
 }
 
 .form-container {
@@ -184,6 +185,8 @@ form button:hover {
     color: red;
     margin-top: 10px;
     margin-left: 45%;
+    display: flex;
+    align-items: center;
 }
 
 .link-btn {
@@ -193,6 +196,8 @@ form button:hover {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
 }
 .content-container{
     margin-top: 100px;
@@ -220,7 +225,7 @@ tbody tr {
 }
 
 table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #000f80;
     margin-bottom: 50px;
 }
 
