@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import './Style.css';
 import logo from './logo.jpg';
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ email, setEmail }) => {
+const Home = () => {
     const navigate = useNavigate();
 
     const handleSignUp = () => {
@@ -14,16 +13,6 @@ const Home = ({ email, setEmail }) => {
         navigate('/signin');
     };
 
-    const handleSignOut = () => {
-        setEmail("");
-        navigate('/');
-    };
-
-    const handleReset = () =>{
-        navigate('/reset');
-
-    }
-
     return (
         <div className="home-container">
             <div>
@@ -32,13 +21,7 @@ const Home = ({ email, setEmail }) => {
                 <p onClick={handleSignUp} className="home-text">Don't have an account?</p>
                 <button onClick={handleSignUp} className="home-buttons">Sign Up</button>
             </div>
-
-            <div>
-                <h3 onClick={handleReset}>Forgot password?</h3>
-            </div>
         </div>
-
-        
     );
 };
 

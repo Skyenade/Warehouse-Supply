@@ -38,7 +38,10 @@ const SignIn = ({ setUserEmail }) => {
         }
     };
 
- 
+    const handleReset = () => {
+        navigate('/reset');
+
+    }
 
 
     return (
@@ -61,18 +64,15 @@ const SignIn = ({ setUserEmail }) => {
                         placeholder="Password"
                         required
                     />
+
+                    <p onClick={handleReset} className="link-btn">Forgot password?</p>
+
                     <button type="submit">Login</button>
                 </form>
                 {error && <p className="error">{error}</p>}
-                <button onClick={() => navigate("/signup")} className="link-btn">
-                    You don't have an account? Sign up here
-                </button>
+                <p onClick={() => navigate("/signup")} className="link-btn">You don't have an account? Sign up here</p>
             </div>
-
-            
         </div>
-
-
     );
 };
 

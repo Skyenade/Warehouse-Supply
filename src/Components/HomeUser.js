@@ -73,7 +73,7 @@ const HomeUser = ({ inventoryItems, onDelete, onEdit, email, setEmail }) => {
                         <button className="search-button" onClick={handleSearch}>Search</button>
                     </div>
 
-                    <button className="go-to-inventory" onClick={goToInventoryUser}>Go to Inventory User</button>
+                    <button className="go-to-inventory" onClick={goToInventoryUser}>Add Inventory</button>
                 </div>
                 <table>
                     <thead>
